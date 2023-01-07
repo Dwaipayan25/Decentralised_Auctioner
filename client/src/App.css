@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.blur{
+  position: absolute;
+  z-index: -9;
+  width: 22rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: #edd0ff;
+  top: -18%;
+  filter: blur(72px);
+
+}

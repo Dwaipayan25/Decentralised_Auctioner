@@ -2,6 +2,8 @@ import { useState,useEffect } from "react";
 import { ethers } from "ethers";
 import { Link } from 'react-router-dom';
 
+import './Auction.css'
+
 const Auctions = ({state,setid}) => {
      const [auctions,setAuctions]=useState([]);
      const {contract}= state;
@@ -34,39 +36,51 @@ const Auctions = ({state,setid}) => {
           </Link>
       </button>
       <h1>Auctions</h1>
+      <div className="auctionsContainer">
       {
           auctions
                .slice(0)
                .reverse()
                .map((auction)=>{
                return(
-                    <div style={{color:"blue", backgroundColor:"yellow"}}>
+                    <div>
                     
                     <table key={auction.AuctionId}>
                     <tbody>
                     <tr>
-                    <button onClick={()=>{setid(changeToInt(auction.AuctionId))}}>
-                    <Link to="/show">
-                              View
-                    </Link>
-                    </button>
-                         <img style={{maxWidth:"129px"}}
+                    
+                        <div className="auctionImgContainer">
+                        <img style={{maxWidth:"129px"}}
                               src={`https://gateway.pinata.cloud/ipfs/${auction.hash.substring(6)}`}
                               alt="new"
-                         >
-                         </img>
-                         <td className="align-middle">{auction.auctionStarter}</td><br/>
-                         <td className="align-middle">About:{auction.about}</td>
-                         <td className="align-middle">{ethers.utils.formatEther(auction.startBidPrice)*(10**18)}</td>
-                         <td className="align-middle">{auction.highestBidder}</td>
-                         <td className="align-middle">{ethers.utils.formatEther(auction.highestBid)*(10**18)}</td>
-                         <td className="align-middle">
+                         />
+                          <Link to="/show">
+                         <button onClick={()=>{setid(changeToInt(auction.AuctionId))}}>
+                   
+                              View
+                   
+                    </button>
+                    </Link>
+                         </div> 
+                         <hr/>
+                        <div className="auctionDataContainer">
+                        <td className="etherData"><div className="etherId">{auction.auctionStarter}</div></td>
+                        <td >{ethers.utils.formatEther(auction.startBidPrice)*(10**18)}</td><br/>
+                         
+                         <td >{auction.about}</td><br/>
+                         <td className="etherData"><div className="etherId">{auction.highestBidder}</div></td>
+                        
+                         <td >{ethers.utils.formatEther(auction.highestBid)*(10**18)}</td><br/>
+                         <td >
                               {new Date(auction.startTime*1000).toLocaleString()}
-                         </td>
+                         </td><br/>
                          {/* <Link to={/Auction} state={"hello"}> */}
-                         <td className="align-middle">{auction.auctionActive ? "ongoing" : "ended "}</td>
+                         <td >{auction.auctionActive ? "ongoing" : "ended "}</td>
                          {/* </Link> */}
-                         <td className="align-middle">{auction.owner}</td>
+                         {/* <td className="etherData"><div className="etherId">{auction.owner}</div></td> */}
+
+                        </div>
+                        
                     </tr>
                     </tbody>
                     </table>
@@ -75,6 +89,8 @@ const Auctions = ({state,setid}) => {
           }
           )
       }
+      </div>
+      
     </div>
   )
 }

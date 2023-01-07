@@ -68,6 +68,7 @@ function App() {
     
     <div className="App">
       <Navbar state={state} account={account}/>
+      <div className='blur' style={{backgroud:"blue"}}></div>
       
       <BrowserRouter>
         <Routes>
