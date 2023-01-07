@@ -5,7 +5,7 @@
 - This project is made using hardhat and ethers.js to deploy and interact with smart contract
 - It has been deployed to Polygon Testnet. So make sure to connect your metamask wallet to polygon test net to see all the transactions.
 
-Live Webiste: https://decentralisedauction01.netlify.app/
+Live Webiste: blockbid.netlify.app
 
 Presentation Slide:
 
