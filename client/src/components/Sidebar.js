@@ -10,9 +10,9 @@ const Sidebar = () => {
   const SideBarIcon = ({ icon, text = "tooltip"}) => (
         <div className="sidebar-icon group">
           {icon}
-          <span class="sidebar-tooltip group-hover:scale-100 group-hover:scale-100">
+          {/* <span class="sidebar-tooltip group-hover:scale-10 group-hover:scale-10">
             {text}
-          </span>
+          </span> */}
         </div>
   );
   const ThemeIcon = () => {
@@ -31,19 +31,19 @@ const Sidebar = () => {
   return (
     <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-black shadow-lg  dark:bg-gray-900 ">
       <Link to="/">
-      <SideBarIcon icon={<AiFillHome size="28" />} text="HOME" linker="/" />
+      <SideBarIcon icon={<AiFillHome size="28" />} text="" />
       </Link>
       <Link to="/">
       <SideBarIcon
         icon={<AiFillPlusCircle size="28" />}
-        text="CREATE AUCTIONS"
+        text=""
       />
       </Link>
       <Link to="/auctions">
-      <SideBarIcon icon={<RiAuctionFill size="28" />} text="AUCTIONS" ></SideBarIcon>
+      <SideBarIcon icon={<RiAuctionFill size="28" />} text="" ></SideBarIcon>
       </Link>
-      <SideBarIcon icon={<BiDollarCircle size="28" />} text="BID" />
-      <SideBarIcon icon={<ThemeIcon size="28" />} text="DarkMode" />
+      <SideBarIcon icon={<BiDollarCircle size="28" />} text="" />
+      {/* <SideBarIcon icon={<ThemeIcon size="28" />} text="DarkMode" /> */}
     </div>
   );
 };

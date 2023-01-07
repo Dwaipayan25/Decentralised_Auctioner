@@ -73,10 +73,11 @@ const CreateAuction = ({ state, account }) => {
         className="min-h-screen py-40"
         style={{
           color: "blue",
-          backgroundColor: "white",
-          backgroundImage: "linear-gradient(115deg,#9F7AEA,#FEE2FE)",
+          backgroundColor: "#282c34",
+          backgroundImage: "linear-gradient(to right top, #282c36, #252943, #2a244e, #371953, #490053)",
         }}
       >
+      <div className='blur' style={{backgroud:"blue"}}></div>
         <div className="container mx-auto">
           <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-white rounded-xl mx-auto shadow-lg overlow-hidden">
             <div
@@ -87,9 +88,7 @@ const CreateAuction = ({ state, account }) => {
                   "url(https://d32ijn7u0aqfv4.cloudfront.net/wp/wp-content/uploads/raw/bitcoin-cryptocurrency-vault-safelock_SOIN20003_905168316_is_1560x880.jpg)",
               }}
             >
-              <button className="text-white text-3xl mb-3">
-                <Link to="/auctions">Auctions</Link>
-              </button>
+            
             </div>
             <div className="w-full lg:w-1/2 py-16 px-12">
               <h2 className="text-3xl mb-4">Create New Auction</h2>
@@ -157,7 +156,13 @@ const CreateAuction = ({ state, account }) => {
             </div>
           </div>
         </div>
+        <Link to="/auctions">
+              <button className="text-black text-3xl mt-12 rounded-md">
+                 Show Auctions
+              </button>
+      </Link>
       </div>
+      
     </>
   );
 };

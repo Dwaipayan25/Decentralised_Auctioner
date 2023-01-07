@@ -1,8 +1,16 @@
 import { useState,useEffect } from "react";
 import { ethers } from "ethers";
 import { Link } from 'react-router-dom';
-import Sidebar from './Sidebar'
+import Sidebar from "./Sidebar";
+
 import './Auction.css'
+
+export const shortenAddress = (address) => {
+  return `${address.substring(0, 5)}...${address.substring(
+  address.length - 4,
+  address.length
+  )}`;
+}
 
 const Auctions = ({state,setid}) => {
      const [auctions,setAuctions]=useState([]);
@@ -30,22 +38,24 @@ const Auctions = ({state,setid}) => {
 
   return (
     <div>
-      
+      <Sidebar/>
       <h1>Auctions</h1>
       <div className="auctionsContainer">
-        {auctions
-          .slice(0)
-          .reverse()
-          .map((auction) => {
-            return (
-              <div>
-                <table key={auction.AuctionId}>
-                  <tbody>
+      {
+          auctions
+               .slice(0)
+               .reverse()
+               .map((auction)=>{
+               return(
+                    <div>
+                    
+                    <table key={auction.AuctionId}>
+                    <tbody>
                     <tr>
                     
                         <div className="auctionImgContainer">
                          <div className="auctionImg">
-                         <img style={{maxWidth:"129px"}}
+                         <img 
                               src={`https://gateway.pinata.cloud/ipfs/${auction.hash.substring(6)}`}
                               alt="new"
                          />
@@ -61,11 +71,11 @@ const Auctions = ({state,setid}) => {
                          </div> 
                          <hr/>
                         <div className="auctionDataContainer">
-                        <td className="etherData"><div className="etherId">{auction.auctionStarter}</div></td>
+                        <td className="etherData"><div className="etherId">{shortenAddress(auction.auctionStarter)}</div></td>
                         <td className="bidPrice">$ {Math.round(ethers.utils.formatEther(auction.startBidPrice)*(10**18))}</td><br/>
                          
                          <td className="auctionAbout">{auction.about}</td><br/>
-                         <td className="etherData"><div className="etherId">{auction.highestBidder}</div></td>
+                         <td className="etherData"><div className="etherId">{shortenAddress(auction.highestBidder)}</div></td>
                         
                          <td className="buyPrice">$ {Math.round(ethers.utils.formatEther(auction.highestBid)*(10**18))}</td><br/>
                          <td >
@@ -76,35 +86,20 @@ const Auctions = ({state,setid}) => {
                          {/* </Link> */}
                          {/* <td className="etherData"><div className="etherId">{auction.owner}</div></td> */}
 
-                        <td>{auction.about}</td>
-                        <br />
-                        <td className="etherData">
-                          <div className="etherId">{auction.highestBidder}</div>
-                        </td>
-
-                        <td>
-                          {ethers.utils.formatEther(auction.highestBid) *
-                            10 ** 18}
-                        </td>
-                        <br />
-                        <td>
-                          {new Date(auction.startTime * 1000).toLocaleString()}
-                        </td>
-                        <br />
-                        {/* <Link to={/Auction} state={"hello"}> */}
-                        <td>{auction.auctionActive ? "ongoing" : "ended "}</td>
-                        {/* </Link> */}
-                        {/* <td className="etherData"><div className="etherId">{auction.owner}</div></td> */}
-                      </div>
+                        </div>
+                        
                     </tr>
-                  </tbody>
-                </table>
-              </div>
-            );
-          })}
+                    </tbody>
+                    </table>
+                    </div>
+               )
+          }
+          )
+      }
       </div>
+      
     </div>
-  );
+  )
 }
 
 export default Auctions
