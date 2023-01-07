@@ -30,11 +30,7 @@ const Auctions = ({state,setid}) => {
 
   return (
     <div>
-      <Sidebar />
-
-      <button>
-        <Link to="/">Home</Link>
-      </button>
+      
       <h1>Auctions</h1>
       <div className="auctionsContainer">
         {auctions
@@ -46,36 +42,39 @@ const Auctions = ({state,setid}) => {
                 <table key={auction.AuctionId}>
                   <tbody>
                     <tr>
-                      <div className="auctionImgContainer">
-                        <img
-                          style={{ maxWidth: "129px" }}
-                          src={`https://gateway.pinata.cloud/ipfs/${auction.hash.substring(
-                            6
-                          )}`}
-                          alt="new"
-                        />
-                        <Link to="/show">
-                          <button
-                            onClick={() => {
-                              setid(changeToInt(auction.AuctionId));
-                            }}
-                          >
-                            View
-                          </button>
-                        </Link>
-                      </div>
-                      <hr />
-                      <div className="auctionDataContainer">
-                        <td className="etherData">
-                          <div className="etherId">
-                            {auction.auctionStarter}
-                          </div>
-                        </td>
-                        <td>
-                          {ethers.utils.formatEther(auction.startBidPrice) *
-                            10 ** 18}
-                        </td>
-                        <br />
+                    
+                        <div className="auctionImgContainer">
+                         <div className="auctionImg">
+                         <img style={{maxWidth:"129px"}}
+                              src={`https://gateway.pinata.cloud/ipfs/${auction.hash.substring(6)}`}
+                              alt="new"
+                         />
+                         </div>
+                        
+                          <Link to="/show">
+                         <button onClick={()=>{setid(changeToInt(auction.AuctionId))}}>
+                   
+                              View
+                   
+                    </button>
+                    </Link>
+                         </div> 
+                         <hr/>
+                        <div className="auctionDataContainer">
+                        <td className="etherData"><div className="etherId">{auction.auctionStarter}</div></td>
+                        <td className="bidPrice">$ {Math.round(ethers.utils.formatEther(auction.startBidPrice)*(10**18))}</td><br/>
+                         
+                         <td className="auctionAbout">{auction.about}</td><br/>
+                         <td className="etherData"><div className="etherId">{auction.highestBidder}</div></td>
+                        
+                         <td className="buyPrice">$ {Math.round(ethers.utils.formatEther(auction.highestBid)*(10**18))}</td><br/>
+                         <td >
+                              {new Date(auction.startTime*1000).toLocaleString()}
+                         </td><br/>
+                         {/* <Link to={/Auction} state={"hello"}> */}
+                         <td className="auctionStatus" style={auction.auctionActive ? {color:"rgb(0, 255, 60)"} : {color:"red"} }>{auction.auctionActive ? "ongoing" : "ended "}</td>
+                         {/* </Link> */}
+                         {/* <td className="etherData"><div className="etherId">{auction.owner}</div></td> */}
 
                         <td>{auction.about}</td>
                         <br />
