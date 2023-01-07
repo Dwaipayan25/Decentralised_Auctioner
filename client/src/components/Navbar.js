@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({account}) => {
   return (
-    <div style={{color:"blue", backgroundColor:"yellow"}}>
+    <div style={{width:"50%",height:"3%",border:"2px solid #000",borderRadius:"30px",marginTop:"-2px" }}>
       <p>Connected Account: {account}</p>
       
     </div>
