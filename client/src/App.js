@@ -30,12 +30,12 @@ function App() {
           const accounts=await ethereum.request({method:"eth_requestAccounts"});
 
           window.ethereum.on("chainChanged",()=>{
-            window.location.reload();
+            // window.location.reload();
           })
 
           window.ethereum.on("accountsChanged",()=>{
-            window.location.reload();
-            // connectWallet();
+            // window.location.reload();
+            connectWallet();
           })
         
           const provider=new ethers.providers.Web3Provider(window.ethereum);
