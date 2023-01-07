@@ -113,66 +113,73 @@ const ShowAuction = ({state,id}) => {
      })
 
   return (
-     <div>
-     <button><Link to="/auctions">
-          Auctions
-     </Link>
-     </button>
-     <ul>
-          <img style={{maxWidth:"129px"}}
-               src={`https://gateway.pinata.cloud/ipfs/${hash1.substring(6)}`}
-               alt="new"
-          >
-          </img>
-          <li>ID:{id}</li>
-          <li>Auction Started By:{auctionStarter}</li>
-          <li>Description: {about}</li>
-          <li>Start Price: {startBidPrice}</li>
-          <li>Highest Bidder till Now:{highestBidder}</li>
-          <li>Highest Bid:{highestBid}</li>
-          <li>Date of starting of auction:{new Date(startTime*1000).toLocaleString()}</li>
-          <li>Status:{auctionActive ? "Auction Active" : "Auction Closed"}</li>
-          <li>Present Owner:{owner}</li>
-     </ul>
-     <div>
-          <input type="text" id="bid1" placeholder="Bid Value"/>
-          <button onClick={() => bid()}>Place bid</button><br/>
-     </div>
-     <div>
-          (Only by creator of the auction)
-          <button onClick={() => endAuction()}>End Auction</button>
-     </div>
-     <div>
-          <button onClick={() => buyBid()}>Buy Bid</button>
-     </div>
-     <div>
-          <button onClick={() => showEvents()}>Show Events</button>
-     </div>
-     <div>
-          <h2>Details of the Auction</h2>
-          {
-               events && events
-               .slice(0)
-               .reverse()
-               .map((event)=>{
-                    return(
-                         <div>
-                              <table key={event.Time} className="showAuctionTable">
-                                   <tr>
-                                        <td>{event.Bidder}</td>
-                                        <td>{changeToInt(event.price)}</td>
-                                        <td>{new Date(changeToInt(event.Time)*1000).toLocaleString()}</td>
-                                        <td>{event.about=="bid" ? "bid done" : event.about}</td>
-                                   </tr>
-                              </table>
-                         </div>
-                         )
-                    }
-               )
-          }
-     </div>
+    <div>
+      <button>
+        <Link to="/auctions">Auctions</Link>
+      </button>
+      <ul>
+        <img
+          style={{ maxWidth: "129px" }}
+          src={`https://gateway.pinata.cloud/ipfs/${hash1.substring(6)}`}
+          alt="new"
+        ></img>
+        <li>ID:{id}</li>
+        <li>Auction Started By:{auctionStarter}</li>
+        <li>Description: {about}</li>
+        <li>Start Price: {startBidPrice}</li>
+        <li>Highest Bidder till Now:{highestBidder}</li>
+        <li>Highest Bid:{highestBid}</li>
+        <li>
+          Date of starting of auction:
+          {new Date(startTime * 1000).toLocaleString()}
+        </li>
+        <li>Status:{auctionActive ? "Auction Active" : "Auction Closed"}</li>
+        <li>Present Owner:{owner}</li>
+      </ul>
+      <div>
+        <input type="text" id="bid1" placeholder="Bid Value" />
+        <button onClick={() => bid()}>Place bid</button>
+        <br />
+      </div>
+      <div>
+        (Only by creator of the auction)
+        <button onClick={() => endAuction()}>End Auction</button>
+      </div>
+      <div>
+        <button onClick={() => buyBid()}>Buy Bid</button>
+      </div>
+      <div>
+        <button onClick={() => showEvents()}>Show Events</button>
+      </div>
+      <div>
+        <h2>Details of the Auction</h2>
+        {events &&
+          events
+            .slice(0)
+            .reverse()
+            .map((event) => {
+              return (
+                <div>
+                  <table key={event.Time} className="showAuctionTable">
+                    <tr>
+                      <td>{event.Bidder}</td>
+                      <td>{changeToInt(event.price)}</td>
+                      <td>
+                        {new Date(
+                          changeToInt(event.Time) * 1000
+                        ).toLocaleString()}
+                      </td>
+                      <td>
+                        {event.about == "bid" ? "bid done" : event.about}
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              );
+            })}
+      </div>
     </div>
-  )
+  );
 }
 
 export default ShowAuction
