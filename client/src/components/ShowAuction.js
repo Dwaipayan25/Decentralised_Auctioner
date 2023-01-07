@@ -2,6 +2,7 @@ import React from 'react'
 import { ethers } from "ethers";
 import { useState,useEffect } from "react";
 import { Link } from 'react-router-dom';
+import Sidebar from "./Sidebar";
 
 import './ShowAuction.css'
 
@@ -114,6 +115,7 @@ const ShowAuction = ({state,id}) => {
 
   return (
     <div>
+          <Sidebar />
       <button>
         <Link to="/auctions">Auctions</Link>
       </button>

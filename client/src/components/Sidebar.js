@@ -30,12 +30,18 @@ const Sidebar = () => {
   };
   return (
     <div className="fixed top-0 left-0 h-screen w-16 m-0 flex flex-col bg-black shadow-lg  dark:bg-gray-900 ">
+      <Link to="/">
       <SideBarIcon icon={<AiFillHome size="28" />} text="HOME" linker="/" />
+      </Link>
+      <Link to="/">
       <SideBarIcon
         icon={<AiFillPlusCircle size="28" />}
         text="CREATE AUCTIONS"
       />
-      <SideBarIcon icon={<RiAuctionFill size="28" />} text="AUCTIONS" />
+      </Link>
+      <Link to="/auctions">
+      <SideBarIcon icon={<RiAuctionFill size="28" />} text="AUCTIONS" ></SideBarIcon>
+      </Link>
       <SideBarIcon icon={<BiDollarCircle size="28" />} text="BID" />
       <SideBarIcon icon={<ThemeIcon size="28" />} text="DarkMode" />
     </div>
