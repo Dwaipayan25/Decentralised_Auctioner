@@ -72,9 +72,9 @@ const CreateAuction = ({ state, account }) => {
       <div
         className="min-h-screen py-40"
         style={{
-          color: "blue",
+          color: "black",
           backgroundColor: "#282c34",
-          backgroundImage: "linear-gradient(to right top, #282c36, #252943, #2a244e, #371953, #490053)",
+          // backgroundImage: "linear-gradient(to right top, #282c36, #252943, #2a244e, #371953, #490053)",
         }}
       >
       <div className='blur' style={{backgroud:"blue"}}></div>
@@ -134,13 +134,13 @@ const CreateAuction = ({ state, account }) => {
                   ></input>
                   <span>
                     I accept the
-                    <span className="text-black font-semibold ">
+                    
                       terms of use
-                    </span>
+                    
                     and
-                    <span className="text-black font-semibold ">
+                   
                       Privacy Policy
-                    </span>
+                  
                   </span>
                 </div>
                 <div className="mt-5">
