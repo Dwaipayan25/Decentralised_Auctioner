@@ -3,6 +3,8 @@ import { ethers } from "ethers";
 import { useState,useEffect } from "react";
 import { Link } from 'react-router-dom';
 
+import './ShowAuction.css'
+
 const ShowAuction = ({state,id}) => {
      const {contract}= state;
      // console.log(id);
@@ -155,7 +157,7 @@ const ShowAuction = ({state,id}) => {
                .map((event)=>{
                     return(
                          <div>
-                              <table key={event.Time}>
+                              <table key={event.Time} className="showAuctionTable">
                                    <tr>
                                         <td>{event.Bidder}</td>
                                         <td>{changeToInt(event.price)}</td>
