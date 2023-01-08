@@ -21,3 +21,9 @@ Tech Stack used:
 8. HTML/CSS
 9. javascript
 10. metamask
+
+To run this locally:
+
+1. Go to client folder
+2. run `npm install`
+3. run `npm start` and open on your localhost
